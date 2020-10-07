@@ -29,10 +29,54 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     justify-content: center;
     background-color: #A9CBD9;
+    font-family: 'Righteous', serif;
+    
 }
 .container{
-    background-color:#5327F2; ;
-    width: 700px;
-    height:700px;
-    margin: 100px;
+    background-color: #5327F2; 
+    width: 600px;
+    height:600px; 
+    margin: 50px; 
+    padding:50px;
+    border-radius: 50px; 
 }
+.title{
+    font-family: 'Righteous', serif;
+    font-size: 48px;
+    text-align: center;
+    color: #e06fd7;
+}
+.title span {
+ color : white
+}
+
+.subhead{
+    display:flex;
+
+}
+.subhead-a{
+    color: white;
+  
+}
+.subhead-b{
+    color: white;
+    margin-left: 400px;
+    cursor:pointer;
+}
+.subhead-b:hover{
+    color: #A672A2;
+}
+.game-area{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    grid-gap: 15px;
+    margin-top: 50px;
+    background: white 
+}
+.game-area-cube{
+    height :150px;;
+    width:200px;
+    background:#5327F2; ;
+}
+
