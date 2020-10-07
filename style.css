@@ -1,0 +1,38 @@
+/* Color Theme Swatches in Hex */
+.Interaction-1-hex { color: #A672A2; }
+.Interaction-2-hex { color: #5327F2; }
+.Interaction-3-hex { color: #6A44F2; }
+.Interaction-4-hex { color: #8E72F2; }
+.Interaction-5-hex { color: #A9CBD9; }
+
+/* Color Theme Swatches in RGBA */
+.Interaction-1-rgba { color: rgba(165, 114, 162, 1); }
+.Interaction-2-rgba { color: rgba(82, 38, 242, 1); }
+.Interaction-3-rgba { color: rgba(105, 67, 242, 1); }
+.Interaction-4-rgba { color: rgba(141, 113, 242, 1); }
+.Interaction-5-rgba { color: rgba(169, 203, 216, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Interaction-1-hsla { color: hsla(303, 22, 54, 1); }
+.Interaction-2-hsla { color: hsla(253, 88, 55, 1); }
+.Interaction-3-hsla { color: hsla(253, 87, 60, 1); }
+.Interaction-4-hsla { color: hsla(253, 83, 69, 1); }
+.Interaction-5-hsla { color: hsla(196, 38, 75, 1); }
+
+* {
+    margin:0;
+    padding:0;
+
+}
+body{
+    display: flex;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+    background-color: #A9CBD9;
+}
+.container{
+    background-color:#5327F2; ;
+    width: 700px;
+    height:700px;
+    margin: 100px;
+}
