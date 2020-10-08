@@ -75,8 +75,21 @@ body{
     background: white 
 }
 .game-area-cube{
-    height :150px;;
-    width:200px;
-    background:#5327F2; ;
+    height :200px;;
+    width  :200px;
+    background:#5327F2; 
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.x::before{
+    content:'x';
+    font-size:200px;
+}
+
+.o::before{
+    content:'o';
+    font-size:200px;
 }
 
