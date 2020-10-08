@@ -34,8 +34,8 @@ body{
 }
 .container{
     background-color: #5327F2; 
-    width: 600px;
-    height:600px; 
+    width: 700px;
+    height:800px; 
     margin: 50px; 
     padding:50px;
     border-radius: 50px; 
@@ -70,12 +70,12 @@ body{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows:repeat(3,1fr);
-    grid-gap: 15px;
-    margin-top: 50px;
+    grid-gap: 10px;
+    margin: 50px;
     background: white 
 }
 .game-area-cube{
-    height :200px;;
+    height :200px;
     width  :200px;
     background:#5327F2; 
     display:flex;
@@ -91,5 +91,10 @@ body{
 .o::before{
     content:'o';
     font-size:200px;
+    color: #be1ab1;
+}
+.status span{
+    color: #A9CBD9;
+
 }
 
