@@ -12,7 +12,7 @@ console.log("GAME SQUARES==",gamesquares);
 let winner=null;
 
 //main game boolean variables
-let gameIsOver = true;
+let resetGame = true;
 let xIsNext =true; //if this is true x turn otherwise o S turn
 /* event handlers section */
 //game constants for players
@@ -22,7 +22,8 @@ const oSymbol='o';
 const letterToSymbol=(letter)=> letter==='x' ? xSymbol : oSymbol;
 const winnerStatus=(letter)=> {
         winner = letter;
-        gameIsOver= false;
+        resetGame= false;
+        console.log(resetGame);
         if (winner==='x'){
         playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;
         }
@@ -34,6 +35,7 @@ const winnerStatus=(letter)=> {
  * GAME START OVER OR RESET BUTTON
  */
 const handleStartOver= ()=>{
+    resetGame= true;
     xIsNext =true;
     playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
     for (const gamesquare of gamesquares){
@@ -52,7 +54,7 @@ const udateGameStatus=(e)=>{
 
     const middleLeft=gamesquares[3].classList[1];
     const middleMiddle=gamesquares[4].classList[1];
-    const middleRight=gamesquares[5].classList[2];
+    const middleRight=gamesquares[5].classList[1];
 
     const bottomLeft=gamesquares[6].classList[1];
     const bottomMiddle=gamesquares[7].classList[1];
@@ -65,6 +67,8 @@ const udateGameStatus=(e)=>{
         winnerStatus(topLeft);
     }
     else if (middleLeft && middleLeft===middleMiddle && middleLeft===middleRight){
+        
+        console.log ("middleleft",middleLeft);
         winnerStatus(middleLeft);
     }
     else if ( bottomLeft && bottomLeft===bottomMiddle && bottomLeft===bottomRight){
@@ -90,7 +94,7 @@ const udateGameStatus=(e)=>{
     }
     //tie condition
     else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && bottomLeft && bottomMiddle &&bottomRight){
-        gameIsOver= false;
+        resetGame= false;
         playerstatus.innerHTML= "Game is tied" ;  
 
     }
@@ -114,7 +118,7 @@ const udateGameStatus=(e)=>{
 const handleGameCubeClick =(e)=>{
     //get the classname from the target attribute
     //console.log(e);
-   // console.log(e.target.classList);
+    // console.log(e.target.classList);
     /* we need the classlist just to make sure the class is not added twice8*/
     const gamecubeClassList = e.target.classList;
     const location =e.target.classList[1];//gives the exact location
@@ -122,6 +126,11 @@ const handleGameCubeClick =(e)=>{
    
    //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
    //if the class is aleady there dont do anything--just return
+    console.log("resetGame---->",resetGame);
+    if(!resetGame){
+        return;
+    }
+     
      if ((gamecubeClassList.contains("x"))|| (gamecubeClassList.contains("o"))) {
         return;
      }

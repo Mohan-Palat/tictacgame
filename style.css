@@ -52,6 +52,7 @@ body{
 
 .subhead{
     display:flex;
+    justify-content: space-around;
 
 }
 .subhead-a{
@@ -95,6 +96,19 @@ body{
 }
 .status span{
     color: #A9CBD9;
+
+}
+@media only screen and (max-wdith: 1024px){
+
+    .game-area{
+       margin-top: top 25px;
+       grid-gap:10px;
+    }
+    .game-area-cube{
+        height:150px;
+        width:250px;
+
+    }
 
 }
 
