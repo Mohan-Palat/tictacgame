@@ -22,6 +22,9 @@ let xIsNext =true; //if this is true x turn otherwise o S turn
 /* event handlers section */
 //game constants for players
 
+//COMPUTER OR FRIEND
+let computer =false;
+
 const xSymbol='x';
 const oSymbol='o';
 const letterToSymbol=(letter)=> letter==='x' ? xSymbol : oSymbol;
@@ -120,6 +123,9 @@ const udateGameStatus=(e)=>{
 
 
 
+
+
+
 const handleGameCubeClick =(e)=>{
    
     //get the classname from the target attribute
@@ -130,13 +136,7 @@ const handleGameCubeClick =(e)=>{
     const location =e.target.classList[1];//gives the exact location
     console.log (gamecubeClassList);
 
-    // X & Y position of mouse click relative to the canvas
-    let X = e.clientX - canvas.getBoundingClientRect().x;
-    let Y = e.clientY - canvas.getBoundingClientRect().y;
-
-    console.log("x==>",X);
-    console.log("y==>",Y);
-
+   
    
    //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
    //if the class is aleady there dont do anything--just return
