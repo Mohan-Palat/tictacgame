@@ -8,6 +8,11 @@ const playerstatus = document.querySelector(".subhead-a");
 //all squares for the game
 const gamesquares=document.querySelectorAll(".game-area-cube");
 console.log("GAME SQUARES==",gamesquares);
+//game-area
+
+const canvas = document.querySelector(".game-area");
+console.log("canvas", canvas);
+// X & Y position of mouse click relative to the canvas
 
 let winner=null;
 
@@ -116,6 +121,7 @@ const udateGameStatus=(e)=>{
 
 
 const handleGameCubeClick =(e)=>{
+   
     //get the classname from the target attribute
     //console.log(e);
     // console.log(e.target.classList);
@@ -123,6 +129,14 @@ const handleGameCubeClick =(e)=>{
     const gamecubeClassList = e.target.classList;
     const location =e.target.classList[1];//gives the exact location
     console.log (gamecubeClassList);
+
+    // X & Y position of mouse click relative to the canvas
+    let X = e.clientX - canvas.getBoundingClientRect().x;
+    let Y = e.clientY - canvas.getBoundingClientRect().y;
+
+    console.log("x==>",X);
+    console.log("y==>",Y);
+
    
    //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
    //if the class is aleady there dont do anything--just return
