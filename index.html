@@ -7,8 +7,28 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Righteous">
     <link rel="stylesheet" href="style.css">
+    <script>
+     function openPopup() {
+       window.location.hash = 'openModal';
+    }
+
+     window.onload = openPopup;
+
+
+    </script>
 </head>
 <body>
+    <div id="openModal" class="modalDialog">
+        <div>
+       
+        Do you want to play as a Human or Computer?
+        <p id ="alphabet"> 
+        <button class="button-human pure-button" id="12">Human</button>
+        <button class="button-computer pure-button"id="22">Computer</button>
+        </p>
+       </div>
+      
+      </div>
     <div class ="container">
       <h1 class="title">Tic <span>Tac </span> Toe </h1>
       <div class= "subhead">
@@ -18,20 +38,21 @@
           <div class="subhead-b">Start Over</div>
       </div>
       <div class="game-area">
-       <div class="game-area-cube"> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
-       <div class="game-area-cube "> </div>
+       <div class="game-area-cube" id="0"> </div>
+       <div class="game-area-cube "id="1"> </div>
+       <div class="game-area-cube "id="2"> </div>
+       <div class="game-area-cube "id="3"> </div>
+       <div class="game-area-cube "id="4"> </div>
+       <div class="game-area-cube "id="5"> </div>
+       <div class="game-area-cube "id="6"> </div>
+       <div class="game-area-cube "id="7"> </div>
+       <div class="game-area-cube "id="8"> </div>
       </div>
     </div>
   
 
     </div>
+    <script src="minmax.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

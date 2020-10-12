@@ -1,5 +1,10 @@
 console.log('app linked');
 //startover div
+
+humanBtn.addEventListener("click", function(e) {
+  
+    modal.style.display = "none"
+ 
 const startoverdiv = document.querySelector(".subhead-b");
 //console.log(startoverdiv)
 //player status
@@ -180,7 +185,7 @@ for (const gamesquare of gamesquares){
     //console.log( '====',gamesquare);
 }
 
-
+})
 
 
 
