@@ -1,44 +1,44 @@
 console.log('app linked');
 //startover div
-
+//let humanBtn = document.querySelector(".button-human ")
 humanBtn.addEventListener("click", function(e) {
   
     modal.style.display = "none"
  
-const startoverdiv = document.querySelector(".subhead-b");
-//console.log(startoverdiv)
-//player status
-const playerstatus = document.querySelector(".subhead-a");
-//console.log(playerstatus);
-//all squares for the game
-const gamesquares=document.querySelectorAll(".game-area-cube");
-console.log("GAME SQUARES==",gamesquares);
-//game-area
+// const startoverdiv = document.querySelector(".subhead-b");
+// //console.log(startoverdiv)
+// //player status
+// const playerstatus = document.querySelector(".subhead-a");
+// //console.log(playerstatus);
+// //all squares for the game
+// const gamesquares=document.querySelectorAll(".game-area-cube");
+// console.log("GAME SQUARES==",gamesquares);
+// //game-area
 
-const canvas = document.querySelector(".game-area");
-console.log("canvas", canvas);
-// X & Y position of mouse click relative to the canvas
+// const canvas = document.querySelector(".game-area");
+// console.log("canvas", canvas);
+// // X & Y position of mouse click relative to the canvas
 
-let winner=null;
+// let winner=null;
 
-//main game boolean variables
-let resetGame = true;
-let xIsNext =true; //if this is true x turn otherwise o S turn
-/* event handlers section */
-//game constants for players
+// //main game boolean variables
+// let resetGame = true;
+// let xIsNext =true; //if this is true x turn otherwise o S turn
+// /* event handlers section */
+// //game constants for players
 
-//COMPUTER OR FRIEND
-let computer =false;
+// //COMPUTER OR FRIEND
+// let computer =false;
 
-const xSymbol='x';
-const oSymbol='o';
+// const xSymbol='x';
+// const oSymbol='o';
 const letterToSymbol=(letter)=> letter==='x' ? xSymbol : oSymbol;
 const winnerStatus=(letter)=> {
         winner = letter;
         resetGame= false;
         console.log(resetGame);
         if (winner==='x'){
-        playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;
+             playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;
         }
         else{
             playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;  
@@ -127,10 +127,6 @@ const udateGameStatus=(e)=>{
 
 
 
-
-
-
-
 const handleGameCubeClick =(e)=>{
    
     //get the classname from the target attribute
@@ -159,16 +155,12 @@ const handleGameCubeClick =(e)=>{
    
     if (xIsNext){
        e.target.classList.add('x');
-       console.log("hello world-added-x");
        udateGameStatus();
        console.log(xIsNext);
     }
     else{
        e.target.classList.add('o');
-       console.log("hello world-added-o");
-       udateGameStatus();
-    
-      
+       udateGameStatus();     
 
     }
 };
@@ -182,7 +174,7 @@ startoverdiv.addEventListener('click',handleStartOver);
 //event listeners to nine game cubes
 for (const gamesquare of gamesquares){
     gamesquare.addEventListener('click',handleGameCubeClick)
-    //console.log( '====',gamesquare);
+    console.log( '====',gamesquare);
 }
 
 })

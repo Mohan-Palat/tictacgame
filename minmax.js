@@ -3,7 +3,81 @@ let modal = document.querySelector(".modalDialog")
 let computerBtn = document.querySelector(".button-computer ")
 let humanBtn = document.querySelector(".button-human ")
 
+const startoverdiv = document.querySelector(".subhead-b");
+//const gamesquares=document.querySelectorAll(".game-area-cube");
+let squareCount=9;
+ 
+let origBoard;
+const huPlayer = 'O';
+const aiPlayer = 'X';
+const winConditions = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[6, 4, 2]
+]
+const squares=document.querySelectorAll(".game-area-cube");
 
+
+
+let gameOver =false;
+
+
+//console.log(startoverdiv)
+//player status
+const playerstatus = document.querySelector(".subhead-a");
+//console.log(playerstatus);
+//all squares for the game
+const gamesquares=document.querySelectorAll(".game-area-cube");
+console.log("GAME SQUARES==",gamesquares);
+//game-area
+
+const canvas = document.querySelector(".game-area");
+console.log("canvas", canvas);
+// X & Y position of mouse click relative to the canvas
+
+let winner=null;
+
+//main game boolean variables
+let resetGame = true;
+let xIsNext =true; //if this is true x turn otherwise o S turn
+/* event handlers section */
+//game constants for players
+
+//COMPUTER OR FRIEND
+let computer =false;
+
+const xSymbol='x';
+const oSymbol='o';
+/***
+ * GAME START OVER OR RESET BUTTON
+ */
+const handleStartOver= ()=>{
+    resetGame= true;
+    xIsNext =true;
+    //playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
+    for (const gamesquare of gamesquares){
+        gamesquare.classList.remove('xc');
+        gamesquare.classList.remove('oc');
+        //gamesquare.classList.innerHTML=""
+       // console.log( '====',gamesquare.classList);
+       for( var i = 0; i < winConditions.length; i++ )
+       {
+          
+           for( var j = 0; j < winConditions[i].length; j++ )
+           {
+              let x=document.getElementById( winConditions[i][j] ).innerHTML ;
+              document.getElementById( winConditions[i][j] ).innerHTML ="";
+             
+               
+           }
+    }
+} 
+};
 var buttonElements = document.querySelectorAll('#alphabet button');
 function getbtnid (){
     for (var i = 0;i < buttonElements.length;i++){
@@ -22,25 +96,7 @@ function getbtnid (){
 computerBtn.addEventListener("click", function(e) {
   
     modal.style.display = "none"
- 
-let origBoard;
-const huPlayer = 'O';
-const aiPlayer = 'X';
-const winConditions = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[6, 4, 2]
-]
-const squares=document.querySelectorAll(".game-area-cube");
 
-let squareCount=9;
-
-let gameOver =false;
 
 let setMessageBox= function(caption){
     let messageBox= document.querySelector(".subhead-a");
@@ -61,17 +117,7 @@ let findClaimedSquares = function(marker){
     return claimedSquares;
 }
 
-const handleStartOver= ()=>{
-    gameOver=true;
-    xIsNext =true;
-    playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
-    for (const gamesquare of gamesquares){
-        gamesquare.classList.remove('xc');
-        gamesquare.classList.remove('oc');
-        //console.log( '====',gamesquare);
-    }
-    
-};
+
 
 let checkForDraw = function()
 {
@@ -257,6 +303,10 @@ for (var i = 0; i < squares.length; i++) {
 }
 
 })
+
+startoverdiv.addEventListener('click',handleStartOver);
+
+
 
 
 
