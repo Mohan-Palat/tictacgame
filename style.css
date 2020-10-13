@@ -36,8 +36,8 @@ body{
     background-color: #5327F2; 
     width: 700px;
     height:800px; 
-    margin: 50px; 
-    padding:50px;
+    margin: 10px; 
+    padding:30px;
     border-radius: 50px; 
 }
 .title{
@@ -73,7 +73,7 @@ body{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows:repeat(3,1fr);
-    grid-gap: 10px;
+    grid-gap: 15px;
     margin: 50px;
     background: white 
 }
@@ -142,7 +142,7 @@ body{
     border-radius: 10px;
     border: 4px solid blue;
     padding: 2rem;
-    border-color: #090341;
+    border-color: #b80aaae5;
     border-width: 40px;
     background: #fff;
     background: #A9CBD9;
@@ -198,6 +198,32 @@ body{
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background:  #5327F2;
     font-size: 20px;
+}
+
+.button-human-1 {
+    margin-top: 20px;
+    width: 100px;
+    height: 20px;
+    color: white;
+    border-radius: 8px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    border-color: #5327F2;
+    background: #b80aaa;
+    font-size: 12px;
+    margin-left: 30px;
+}
+
+.button-computer-1 {
+    margin-top: 20px;
+    width: 100px;
+    margin-left: 30px;
+    height: 20px;
+    color: white;
+    border-radius: 8px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    border-color: #5327F2;
+    background: #b80aaa;
+    font-size: 12px;
 }
 .xc{
   

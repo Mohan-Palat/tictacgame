@@ -4,34 +4,15 @@ console.log('app linked');
 humanBtn.addEventListener("click", function(e) {
   
     modal.style.display = "none"
- 
-// const startoverdiv = document.querySelector(".subhead-b");
-// //console.log(startoverdiv)
-// //player status
-// const playerstatus = document.querySelector(".subhead-a");
-// //console.log(playerstatus);
-// //all squares for the game
-// const gamesquares=document.querySelectorAll(".game-area-cube");
-// console.log("GAME SQUARES==",gamesquares);
-// //game-area
 
-// const canvas = document.querySelector(".game-area");
-// console.log("canvas", canvas);
-// // X & Y position of mouse click relative to the canvas
+    for (const gamesquare of gamesquares){
+        gamesquare.addEventListener('click',handleGameCubeClick)
+        console.log( '====',gamesquare);
+    }
+    
+    })
+    
 
-// let winner=null;
-
-// //main game boolean variables
-// let resetGame = true;
-// let xIsNext =true; //if this is true x turn otherwise o S turn
-// /* event handlers section */
-// //game constants for players
-
-// //COMPUTER OR FRIEND
-// let computer =false;
-
-// const xSymbol='x';
-// const oSymbol='o';
 const letterToSymbol=(letter)=> letter==='x' ? xSymbol : oSymbol;
 const winnerStatus=(letter)=> {
         winner = letter;
@@ -169,15 +150,9 @@ const handleGameCubeClick =(e)=>{
 
 //event listener seection
 // event listener to reset 
-startoverdiv.addEventListener('click',handleStartOver);
+//startoverdiv.addEventListener('click',handleStartOver);
 
 //event listeners to nine game cubes
-for (const gamesquare of gamesquares){
-    gamesquare.addEventListener('click',handleGameCubeClick)
-    console.log( '====',gamesquare);
-}
-
-})
 
 
 
