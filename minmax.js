@@ -40,7 +40,8 @@ let compwinner=0;
 let humwinner=0;
 console.log(compwinner);
 console.log(humwinner);
-
+let wnum=localStorage.getItem("cw");
+console.log(wnum);
 let resetGame = true;
 let xIsNext =true; //if this is true x turn otherwise o S turn
 /* event handlers section */
@@ -56,6 +57,8 @@ const oSymbol='o';
  * GAME START OVER OR RESET BUTTON
  */
 //startGame()
+
+
 function startGame() {
 
     var mode = getStoredValue(cw);
@@ -284,13 +287,15 @@ let chooseSquare = function()
 	    		else
 	    		{
                     
-                    console.log(compwinner);
-                    console.log(humwinner);
-                    compwinner =compwinner+1;
-                    console.log(compwinner);
+                 
+                    wnum =Number(wnum)+1;
+                    console.log(wnum);
                     
-                    localStorage.setItem("cw", compwinner);
-                    localStorage.setItem("hw", humwinner);
+                    localStorage.setItem("cw",wnum);
+                    var paragraph = document.getElementById("gamestatus");
+                    var text = document.createTextNode(`Computer won ${wnum} times`);
+                    paragraph.appendChild(text);
+                    console.log(wnum);
                     gameOver = true;
 	    			//highlightWinningSquares( lost, "rgb(102, 0, 204)" );
 	    			setMessageBox( "You lost!" );
@@ -302,6 +307,9 @@ let chooseSquare = function()
                 console.log(humwinner);
                 gameOver = true
                 humwinner =humwinner+1;
+                var paragraph = document.getElementById("gamestatus");
+                var text = document.createTextNode(`Human won: ${humwinner} times`);
+                paragraph.appendChild(text);
                 console.log(humwinner);
 	    		//highlightWinningSquares( win, "rgb(102, 0, 204)" );
 	    		setMessageBox( "You won!" );
