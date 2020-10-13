@@ -1,32 +1,14 @@
 console.log('app linked');
 //startover div
 //let humanBtn = document.querySelector(".button-human ")
-humanBtn.addEventListener("click", function(e) {
-    alert( "h0",e.target.id)
-    //startGame();
-    modal.style.display = "none"
-    for (const gamesquare of gamesquares){
-        gamesquare.addEventListener('click',handleGameCubeClick)
-        console.log( '====',gamesquare);
-    }
-})
-humanBtn1.addEventListener("click", function(e) {
-    alert( "h1",e.target.id);
-    startGame();
-    console.log( humanBtn1);
-    modal.style.display = "none"
-    for (const gamesquare of gamesquares){
-        gamesquare.addEventListener('click',handleGameCubeClick)
-        console.log( '====',gamesquare);
-    }
-})
+
     
 
 const letterToSymbol=(letter)=> letter==='x' ? xSymbol : oSymbol;
 const winnerStatus=(letter)=> {
         winner = letter;
         resetGame= false;
-        console.log(resetGame);
+      
         if (winner==='x'){
              playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;
         }
@@ -37,34 +19,10 @@ const winnerStatus=(letter)=> {
 /***
  * GAME START OVER OR RESET BUTTON
  */
-const handleStartOverH= ()=>{
-    startGame();
-    // resetGame= true;
-    // xIsNext =true;
-    // playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
-    // for (const gamesquare of gamesquares){
-    //     gamesquare.classList.remove('xc');
-    //     gamesquare.classList.remove('oc');
-    //     gamesquare.classList.remove('x');
-    //     gamesquare.classList.remove('o');
-      
-    // }
-    // for( let i = 0; i < winConditions.length; i++ ){     
-    //     for( let j = 0; j < winConditions[i].length; j++ ){
-    //      document.getElementById( winConditions[i][j] ).innerHTML ="";
-    //    }
-    // }
-    // // for (const gamesquare of gamesquares){
-    // //      console.log("human====>");
-    // //     gamesquare.addEventListener('click',handleGameCubeClick)
-     
-    // // }
-    // gameOver =false;
-    
-};
+
 //should be called after every game move
 const udateGameStatus=(e)=>{
-    //console.log(gamesquares[0].classList[1]);
+   
     const topLeft=gamesquares[0].classList[1];
     const topMiddle=gamesquares[1].classList[1];
     const topRight=gamesquares[2].classList[1];
@@ -74,16 +32,15 @@ const udateGameStatus=(e)=>{
     const bottomLeft=gamesquares[6].classList[1];
     const bottomMiddle=gamesquares[7].classList[1];
     const bottomRight=gamesquares[8].classList[1];
-    console.log(topLeft, topMiddle,topRight,middleLeft,middleMiddle,middleRight,bottomLeft,bottomMiddle,bottomRight)
+    //console.log(topLeft, topMiddle,topRight,middleLeft,middleMiddle,middleRight,bottomLeft,bottomMiddle,bottomRight)
    
    //horizontal wins
     if (topLeft && topLeft ===topMiddle && topLeft ===topRight){
-        console.log (topLeft);
+       
         winnerStatus(topLeft);
     }
     else if (middleLeft && middleLeft===middleMiddle && middleLeft===middleRight){
-        
-        console.log ("middleleft",middleLeft);
+       
         winnerStatus(middleLeft);
     }
     else if ( bottomLeft && bottomLeft===bottomMiddle && bottomLeft===bottomRight){
@@ -130,18 +87,15 @@ const udateGameStatus=(e)=>{
 
 
 const handleGameCubeClick =(e)=>{
-    
-    alert( e.target.id);
-    //get the classname from the target attribute
-    //console.log(e);
-    // console.log(e.target.classList);
+    e.preventDefault();
+   
     /* we need the classlist just to make sure the class is not added twice8*/
     const gamecubeClassList = e.target.classList;
     const location =e.target.classList[1];//gives the exact location
     console.log (gamecubeClassList);
    //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
    //if the class is aleady there dont do anything--just return
-    console.log("resetGame---->",resetGame);
+   
     if(!resetGame){
         return;
     }
@@ -150,25 +104,20 @@ const handleGameCubeClick =(e)=>{
         return;
      }
      for (const gamesquare of gamesquares){
-        gamesquare.classList.remove('xc');
-        gamesquare.classList.remove('oc');
-       // gamesquare.classList.remove('x');
-        //gamesquare.classList.remove('o');
-         //gamesquare.classList.innerHTML=""
-        // console.log( '====',gamesquare.classList);
+          gamesquare.classList.remove('xc');
+          gamesquare.classList.remove('oc');
+      
           for( let i = 0; i < winConditions.length; i++ ){     
             for( let j = 0; j < winConditions[i].length; j++ ){
              document.getElementById( winConditions[i][j] ).innerHTML ="";
            }
      }
  } 
-    //console.log(location);
-    //the class should not contain x and o
    
     if (xIsNext){
        e.target.classList.add('x');
        udateGameStatus();
-       console.log(xIsNext);
+       //console.log(xIsNext);
     }
     else{
        e.target.classList.add('o');
@@ -177,13 +126,15 @@ const handleGameCubeClick =(e)=>{
     }
 };
 
-
-
-//event listener seection
-// event listener to reset 
-//humanBtn1.addEventListener('click',handleStartOver);
-
-//event listeners to nine game cubes
+humanBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    //startGame();
+    modal.style.display = "none"
+    for (const gamesquare of gamesquares){
+        gamesquare.addEventListener('click',handleGameCubeClick)
+        
+    }
+})
 
 
 

@@ -30,13 +30,16 @@ const playerstatus = document.querySelector(".subhead-a");
 //console.log(playerstatus);
 //all squares for the game
 const gamesquares=document.querySelectorAll(".game-area-cube");
-console.log("GAME SQUARES==",gamesquares);
+
 //game-area
 const canvas = document.querySelector(".game-area");
-console.log("canvas", canvas);
+
 // X & Y position of mouse click relative to the canvas
 
-let winner=null;
+let compwinner=0;
+let humwinner=0;
+console.log(compwinner);
+console.log(humwinner);
 
 let resetGame = true;
 let xIsNext =true; //if this is true x turn otherwise o S turn
@@ -52,21 +55,22 @@ const oSymbol='o';
 /***
  * GAME START OVER OR RESET BUTTON
  */
-startGame()
+//startGame()
 function startGame() {
+
+    var mode = getStoredValue(cw);
+    console.log('hhhhh==',mode);
+    console.log(humwinner);
     resetGame= true;
     xIsNext =true;
     gameOver =false;
-    //setMessageBox( "Pick a square!" );
-    
-    //playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
+    modal.style.display = "none"
     for (const gamesquare of gamesquares){
        gamesquare.classList.remove('xc');
        gamesquare.classList.remove('oc');
        gamesquare.classList.remove('x');
        gamesquare.classList.remove('o');
-        //gamesquare.classList.innerHTML=""
-       // console.log( '====',gamesquare.classList);
+     
          for( let i = 0; i < winConditions.length; i++ ){     
            for( let j = 0; j < winConditions[i].length; j++ ){
             document.getElementById( winConditions[i][j] ).innerHTML ="";
@@ -77,73 +81,16 @@ function startGame() {
 
 }
 
-
-
-
- const handleStartOverC= ()=>{
-     resetGame= true;
-     xIsNext =true;
-     
-     //playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
-     for (const gamesquare of gamesquares){
-        gamesquare.classList.remove('xc');
-        gamesquare.classList.remove('oc');
-        gamesquare.classList.remove('x');
-        gamesquare.classList.remove('o');
-         //gamesquare.classList.innerHTML=""
-        // console.log( '====',gamesquare.classList);
-        for( let i = 0; i < winConditions.length; i++ ){     
-            for( let j = 0; j < winConditions[i].length; j++ ){
-             document.getElementById( winConditions[i][j] ).innerHTML ="";
-           }
-     }
- } 
- //gameOver = true;
- gameOver =false;
- //setMessageBox( "Pick a square!" );
-
-
-//  for (let i = 0; i < squares.length; i++) {
-//     console.log("computer====>");
-//     squares[i].addEventListener('click', chooseSquare, false);
-// }
- };
-
-
- 
-
-
-let buttonElements = document.querySelectorAll('#alphabet button');
-function getbtnid (){
-    for (let i = 0;i < buttonElements.length;i++){
-    buttonElements[i].addEventListener('click',function(){
-    console.log(this.getAttribute('id') );
-    let y=this.getAttribute('id');
-    return y;
-   });
-  };
-
+function getStoredValue(key) {
+    if (localStorage) {
+        return localStorage.getItem(key);
+    } else {
+        return $.cookies.get(key);
+    }
 }
 
 
-computerBtn.addEventListener("click", function(e) {
-    alert("compu,", e.target.id);
-    modal.style.display = "none"
-    for (let i = 0; i < squares.length; i++) {
-        squares[i].addEventListener('click', chooseSquare, false);
-    }
-    
-    })
-    
-    computerBtn1.addEventListener("click", function(e) {
-        alert( "comp1",e.target.id);
-        modal.style.display = "none"
-        for (let i = 0; i < squares.length; i++) {
-            squares[i].addEventListener('click', chooseSquare, false);
-        }
-        
-        })
-        
+
 
 let setMessageBox= function(caption){
     let messageBox= document.querySelector(".subhead-a");
@@ -183,15 +130,20 @@ let checkForDraw = function()
 
 let checkForWinCondition = function( marker )
 {
-	let claimedSquares = findClaimedSquares(marker);
-
+    let claimedSquares = findClaimedSquares(marker);
+  
+    
 	let win = false;
 	for( let i = 0; i < winConditions.length; i++ )
 	{
-		win = winConditions[i].every( element => claimedSquares.indexOf( element ) > -1 );
+      
+        win = winConditions[i].every( element => claimedSquares.indexOf( element ) > -1 );
+       
 		if( win )
 		{
-			win = winConditions[i];
+          
+            win = winConditions[i];
+           
 			break;
 		}
 	}
@@ -216,6 +168,7 @@ let makeMove = function( marker )
 		{
 			if(  marker === document.getElementById( winConditions[i][j] ).innerHTML )
 			{
+                
 				count++;
 			}
 		}
@@ -227,7 +180,7 @@ let makeMove = function( marker )
 				let square = document.getElementById( winConditions[i][j] )
 				if( squareIsOpen( square ) )
                 {   
-                    console.log("ist os turn");
+                  
                     square.innerHTML = "O";
                     square.classList.add('oc');
 					moveMade = true;
@@ -253,10 +206,11 @@ let opponentMove = function()
 			moveMade = preventDefeat();
 			if( !moveMade )
 			{
-				let center = document.getElementById(4);
+             
+                let center = document.getElementById(4);
 				if( squareIsOpen( center  ) )
                 {  //center.classList.add('o');
-                    console.log("ist os turn");
+                   
                     center.innerHTML = "O";
                     center.classList.add('oc');
                     //center.classList.add('o');
@@ -271,6 +225,7 @@ let opponentMove = function()
 
     let makeMoveAtFirstAvailableSquare = function()
     {
+     
         for( let id = 0; id < squareCount; id++ )
         {
             square = document.getElementById( id );
@@ -288,6 +243,7 @@ let opponentMove = function()
     }
 
     let highlightWinningSquares = function( winningSquares, color ){
+        
 	for( let i = 0; i < winningSquares.length; i++ ){
 		document.getElementById( winningSquares[i] ).style.backgroundColor = color;
 	}
@@ -295,14 +251,8 @@ let opponentMove = function()
 
 let chooseSquare = function() 
 {
-    for (const gamesquare of gamesquares){
-        
-       gamesquare.classList.remove('x');
-        gamesquare.classList.remove('o');
-         //gamesquare.classList.innerHTML=""
-        
- } 
-    
+  
+    event.preventDefault();
 
 
 	if( !gameOver )
@@ -310,17 +260,17 @@ let chooseSquare = function()
 		setMessageBox( "Pick a square!" );
 	    let id = this.getAttribute("id");
         let square = document.getElementById( id );
-        //console.log( "Im getting id",square )
+       
 	    if( squareIsOpen( square ) ) 
 	    {
-            square.classList.add('xc');
-           //
+           
             square.innerHTML = "X";
             square.classList.add('xc');
 	    	let win = checkForWinCondition( "X" );
 	    	if( !win )
 	    	{
-	    		opponentMove();
+                opponentMove();
+                
 	    		let lost = checkForWinCondition( "O" );
 	    		if( !lost)
 	    		{
@@ -333,14 +283,26 @@ let chooseSquare = function()
 	    		}
 	    		else
 	    		{
-	    			gameOver = true;
+                    
+                    console.log(compwinner);
+                    console.log(humwinner);
+                    compwinner =compwinner+1;
+                    console.log(compwinner);
+                    
+                    localStorage.setItem("cw", compwinner);
+                    localStorage.setItem("hw", humwinner);
+                    gameOver = true;
 	    			//highlightWinningSquares( lost, "rgb(102, 0, 204)" );
 	    			setMessageBox( "You lost!" );
 	    		}
 	    	}
 	    	else
 	    	{
-	    		gameOver = true
+                console.log(compwinner);
+                console.log(humwinner);
+                gameOver = true
+                humwinner =humwinner+1;
+                console.log(humwinner);
 	    		//highlightWinningSquares( win, "rgb(102, 0, 204)" );
 	    		setMessageBox( "You won!" );
 	    	}
@@ -353,21 +315,30 @@ let chooseSquare = function()
 	}
 };
 
-//    computerBtn1.addEventListener("click", function(e) {
-   
-//     modal.style.display = "none"
-   
+computerBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+  
+    modal.style.display = "none"
 
-//     for (let i = 0; i < squares.length; i++) {
-//         squares[i].addEventListener('click', chooseSquare, false);
-//     }
+    var mode = getStoredValue("cw");
+    console.log('hhhhh==',mode);
+    console.log(humwinner);
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].addEventListener('click', chooseSquare, false);
+    }
     
-//     })
+    })
     
-    
+ computerBtn1.addEventListener("click", function(e) {
+       
+    console.log(compwinner);
+    console.log(humwinner);
+         window.location.reload();
+         e.preventDefault();
+        })
+        
 
-
-    computerBtn1.addEventListener('click',handleStartOverC);
+    //computerBtn1.addEventListener('click',handleStartOverC);
 
 
 

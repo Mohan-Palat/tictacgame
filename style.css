@@ -87,7 +87,7 @@ body{
 }
 
 
-.x::before{
+.x::after{
     content:'x';
     font-size:200px;
 }
