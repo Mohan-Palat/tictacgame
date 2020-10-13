@@ -36,7 +36,6 @@ const canvas = document.querySelector(".game-area");
 
 // X & Y position of mouse click relative to the canvas
 
-
 let cnum=localStorage.getItem("cw");
 let hnum=localStorage.getItem("hw");
 let playerx=localStorage.getItem("px");
@@ -47,7 +46,7 @@ console.log(cnum);
 console.log(hnum);
 
 let  paragraph = document.querySelector("#gamestatus");
-paragraph.innerHTML = `<span>Computer  won </span> <span id="head">  ${cnum}. </span>X won </span> <span id="head"> ${playerx} <span> <span> O won <span id="head">  ${playero}  </span>`
+paragraph.innerHTML = `<span>Computer  won </span> <span id="head">  ${cnum}. </span><span>X won </span> <span id="head"> ${playerx} <span> <span> O won <span id="head">  ${playero}  </span>`
 let resetGame = true;
 let xIsNext =true; //if this is true x turn otherwise o S turn
 /* event handlers section */
@@ -55,6 +54,8 @@ let xIsNext =true; //if this is true x turn otherwise o S turn
 
 const xSymbol='x';
 const oSymbol='o';
+var audio = new Audio('Winner.mp3');
+
 
 /****End of Global variables for Game */
 
@@ -299,7 +300,8 @@ let chooseSquare = function()
                     paragraph.innerHTML = `<span>Computer won</span> <span id="head"> ${cnum} </span>`
                     gameOver = true;
 	    			//highlightWinningSquares( lost, "rgb(102, 0, 204)" );
-	    			setMessageBox( "You lost!" );
+                    setMessageBox( "You lost!" );
+                    audio.play();
 	    		}
 	    	}
 	    	else
@@ -312,7 +314,9 @@ let chooseSquare = function()
                 paragraph.innerHTML = `<span>Human won <span><span id="head">  ${hnum} </span>`
               
 	    		//highlightWinningSquares( win, "rgb(102, 0, 204)" );
-	    		setMessageBox( "You won!" );
+                setMessageBox( "You won!" );
+                audio.play();
+              
 	    	}
 
 	    }
@@ -355,7 +359,6 @@ humanBtn1.addEventListener("click", function(e) {
         
 
     //computerBtn1.addEventListener('click',handleStartOverC);
-
 
     
 

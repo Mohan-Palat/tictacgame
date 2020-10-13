@@ -6,6 +6,7 @@ const winnerStatus=(letter)=> {
         resetGame= false;
         
         if (winner==='x'){
+            audio.play();
              playerx =Number(playerx)+1;
              localStorage.setItem("px",playerx);
              let  paragraph = document.querySelector("#gamestatus");
@@ -15,6 +16,7 @@ const winnerStatus=(letter)=> {
 
         }
         else{
+            audio.play();
             playero =Number(playero)+1;
     
              localStorage.setItem("po",playero);
