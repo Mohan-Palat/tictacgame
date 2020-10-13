@@ -52,18 +52,47 @@ const oSymbol='o';
 /***
  * GAME START OVER OR RESET BUTTON
  */
+startGame()
+function startGame() {
+    resetGame= true;
+    xIsNext =true;
+    gameOver =false;
+    //setMessageBox( "Pick a square!" );
+    
+    //playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
+    for (const gamesquare of gamesquares){
+       gamesquare.classList.remove('xc');
+       gamesquare.classList.remove('oc');
+       gamesquare.classList.remove('x');
+       gamesquare.classList.remove('o');
+        //gamesquare.classList.innerHTML=""
+       // console.log( '====',gamesquare.classList);
+         for( let i = 0; i < winConditions.length; i++ ){     
+           for( let j = 0; j < winConditions[i].length; j++ ){
+            document.getElementById( winConditions[i][j] ).innerHTML ="";
+          }
+    }
+} 
+//gameOver = true;
+
+}
+
+
+
+
  const handleStartOverC= ()=>{
      resetGame= true;
      xIsNext =true;
-
+     
      //playerstatus.innerHTML= `${xSymbol}  is Next`  ;  
      for (const gamesquare of gamesquares){
         gamesquare.classList.remove('xc');
         gamesquare.classList.remove('oc');
+        gamesquare.classList.remove('x');
+        gamesquare.classList.remove('o');
          //gamesquare.classList.innerHTML=""
         // console.log( '====',gamesquare.classList);
-        for( let i = 0; i < winConditions.length; i++ )
-       {
+        for( let i = 0; i < winConditions.length; i++ ){     
             for( let j = 0; j < winConditions[i].length; j++ ){
              document.getElementById( winConditions[i][j] ).innerHTML ="";
            }
@@ -71,14 +100,17 @@ const oSymbol='o';
  } 
  //gameOver = true;
  gameOver =false;
- setMessageBox( "Pick a square!" );
+ //setMessageBox( "Pick a square!" );
 
 
- for (let i = 0; i < squares.length; i++) {
-    squares[i].addEventListener('click', chooseSquare, false);
-}
+//  for (let i = 0; i < squares.length; i++) {
+//     console.log("computer====>");
+//     squares[i].addEventListener('click', chooseSquare, false);
+// }
  };
 
+
+ 
 
 
 let buttonElements = document.querySelectorAll('#alphabet button');
@@ -88,26 +120,30 @@ function getbtnid (){
     console.log(this.getAttribute('id') );
     let y=this.getAttribute('id');
     return y;
-   
-
-    });
-};
+   });
+  };
 
 }
 
 
 computerBtn.addEventListener("click", function(e) {
-  
+    alert("compu,", e.target.id);
     modal.style.display = "none"
-    console.log("hheee");
-
     for (let i = 0; i < squares.length; i++) {
         squares[i].addEventListener('click', chooseSquare, false);
     }
     
     })
     
-    
+    computerBtn1.addEventListener("click", function(e) {
+        alert( "comp1",e.target.id);
+        modal.style.display = "none"
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].addEventListener('click', chooseSquare, false);
+        }
+        
+        })
+        
 
 let setMessageBox= function(caption){
     let messageBox= document.querySelector(".subhead-a");
@@ -191,7 +227,6 @@ let makeMove = function( marker )
 				let square = document.getElementById( winConditions[i][j] )
 				if( squareIsOpen( square ) )
                 {   
-                   
                     console.log("ist os turn");
                     square.innerHTML = "O";
                     square.classList.add('oc');
@@ -260,7 +295,16 @@ let opponentMove = function()
 
 let chooseSquare = function() 
 {
-	
+    for (const gamesquare of gamesquares){
+        
+       gamesquare.classList.remove('x');
+        gamesquare.classList.remove('o');
+         //gamesquare.classList.innerHTML=""
+        
+ } 
+    
+
+
 	if( !gameOver )
 	{
 		setMessageBox( "Pick a square!" );
@@ -309,16 +353,16 @@ let chooseSquare = function()
 	}
 };
 
- computerBtn1.addEventListener("click", function(e) {
+//    computerBtn1.addEventListener("click", function(e) {
    
-    modal.style.display = "none"
+//     modal.style.display = "none"
    
 
-    for (let i = 0; i < squares.length; i++) {
-        squares[i].addEventListener('click', chooseSquare, false);
-    }
+//     for (let i = 0; i < squares.length; i++) {
+//         squares[i].addEventListener('click', chooseSquare, false);
+//     }
     
-    })
+//     })
     
     
 

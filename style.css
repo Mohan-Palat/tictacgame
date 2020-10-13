@@ -86,6 +86,7 @@ body{
     align-items:center;
 }
 
+
 .x::before{
     content:'x';
     font-size:200px;
