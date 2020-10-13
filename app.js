@@ -1,19 +1,28 @@
 console.log('app linked');
-//startover div
-//let humanBtn = document.querySelector(".button-human ")
-
-    
-
+ 
 const letterToSymbol=(letter)=> letter==='x' ? xSymbol : oSymbol;
 const winnerStatus=(letter)=> {
         winner = letter;
         resetGame= false;
-      
+        
         if (winner==='x'){
+             playerx =Number(playerx)+1;
+             localStorage.setItem("px",playerx);
+             let  paragraph = document.querySelector("#gamestatus");
+             paragraph.innerHTML = `<span>X  won </span><span id="head"> ${playerx}<span>`
+             console.log(playerx);
              playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;
+
         }
         else{
-            playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;  
+            playero =Number(playero)+1;
+    
+             localStorage.setItem("po",playero);
+             let  paragraph = document.querySelector("#gamestatus");
+             paragraph.innerHTML = `<span>X  won</span> <span id="head"> ${playero}<span>`
+             console.log(playerx);
+             playerstatus.innerHTML= `${letterToSymbol(winner)}  has won!!!!`  ;
+             
         }
 }
 /***

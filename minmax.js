@@ -6,7 +6,7 @@ let computerBtn = document.querySelector(".button-computer ")
 let humanBtn = document.querySelector(".button-human ")
 const startoverdiv = document.querySelector(".subhead-b");
 let computerBtn1 = document.querySelector(".button-computer-1 ")
-let humanBtn1 = document.querySelector(".button-human-1 ")
+let humanBtn1 = document.querySelector(".button-human-1")
 let squareCount=9;
  
 let origBoard;
@@ -36,12 +36,18 @@ const canvas = document.querySelector(".game-area");
 
 // X & Y position of mouse click relative to the canvas
 
-let compwinner=0;
-let humwinner=0;
-console.log(compwinner);
-console.log(humwinner);
-let wnum=localStorage.getItem("cw");
-console.log(wnum);
+
+let cnum=localStorage.getItem("cw");
+let hnum=localStorage.getItem("hw");
+let playerx=localStorage.getItem("px");
+let playero=localStorage.getItem("po");
+console.log("playerx",playerx);   
+console.log("playero",playero); 
+console.log(cnum);
+console.log(hnum);
+
+let  paragraph = document.querySelector("#gamestatus");
+paragraph.innerHTML = `<span>Computer  won </span> <span id="head">  ${cnum}. </span>X won </span> <span id="head"> ${playerx} <span> <span> O won <span id="head">  ${playero}  </span>`
 let resetGame = true;
 let xIsNext =true; //if this is true x turn otherwise o S turn
 /* event handlers section */
@@ -286,16 +292,11 @@ let chooseSquare = function()
 	    		}
 	    		else
 	    		{
-                    
-                 
-                    wnum =Number(wnum)+1;
-                    console.log(wnum);
-                    
-                    localStorage.setItem("cw",wnum);
-                    var paragraph = document.getElementById("gamestatus");
-                    var text = document.createTextNode(`Computer won ${wnum} times`);
-                    paragraph.appendChild(text);
-                    console.log(wnum);
+                    cnum =Number(cnum)+1;
+                    console.log(cnum);
+                    localStorage.setItem("cw",cnum);
+                    let  paragraph = document.querySelector("#gamestatus");
+                    paragraph.innerHTML = `<span>Computer won</span> <span id="head"> ${cnum} </span>`
                     gameOver = true;
 	    			//highlightWinningSquares( lost, "rgb(102, 0, 204)" );
 	    			setMessageBox( "You lost!" );
@@ -303,14 +304,13 @@ let chooseSquare = function()
 	    	}
 	    	else
 	    	{
-                console.log(compwinner);
-                console.log(humwinner);
+                console.log(cnum);
+                console.log(hnum);
                 gameOver = true
-                humwinner =humwinner+1;
-                var paragraph = document.getElementById("gamestatus");
-                var text = document.createTextNode(`Human won: ${humwinner} times`);
-                paragraph.appendChild(text);
-                console.log(humwinner);
+                hnum =Number(hnum)+1;
+                let  paragraph = document.querySelector("#gamestatus");
+                paragraph.innerHTML = `<span>Human won <span><span id="head">  ${hnum} </span>`
+              
 	    		//highlightWinningSquares( win, "rgb(102, 0, 204)" );
 	    		setMessageBox( "You won!" );
 	    	}
@@ -328,9 +328,7 @@ computerBtn.addEventListener("click", function(e) {
   
     modal.style.display = "none"
 
-    var mode = getStoredValue("cw");
-    console.log('hhhhh==',mode);
-    console.log(humwinner);
+   
     for (let i = 0; i < squares.length; i++) {
         squares[i].addEventListener('click', chooseSquare, false);
     }
@@ -339,17 +337,26 @@ computerBtn.addEventListener("click", function(e) {
     
  computerBtn1.addEventListener("click", function(e) {
        
-    console.log(compwinner);
-    console.log(humwinner);
+
          window.location.reload();
          e.preventDefault();
         })
+
+
+humanBtn1.addEventListener("click", function(e) {
+    localStorage.setItem("cw",0);
+    localStorage.setItem("hw",0);
+    localStorage.setItem("px",0);
+    localStorage.setItem("po",0);
+
+            window.location.reload();
+            e.preventDefault();
+           })
         
 
     //computerBtn1.addEventListener('click',handleStartOverC);
 
 
-
-
+    
 
 

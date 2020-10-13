@@ -50,9 +50,15 @@ body{
  color : white
 }
 
+#head{
+    color: #e06fd7;
+    font-size:20px;
+    font-weight: bold;
+}
 .subhead{
     display:flex;
     justify-content: space-around;
+    font-size:20px;
 
 }
 .subhead-a{
@@ -64,11 +70,16 @@ body{
     color: white;
     margin-left: 400px;
     cursor:pointer;
-    font-size:20px;
+    
 }
 .subhead-b:hover{
-    color: #b80aaae5;
+    color: white
+  
 }
+.subhead span {
+    color : white
+   }
+   
 .game-area{
     display:grid;
     grid-template-columns: repeat(3,1fr);
