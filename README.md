@@ -55,11 +55,42 @@ CSS Flex and CSS grid is used
    * Event Listeners
    * Modal Dialog
 
+# how winner is selected
+   The main div has 9 div placed using css grid. Using the querySelectorAll , selected the nine grids in an array. 
+   Declared each position in the array
+    const topLeft = gamesquares[0].classList[1];
+    const topMiddle = gamesquares[1].classList[1];
+    const topRight = gamesquares[2].classList[1];
+    const middleLeft = gamesquares[3].classList[1];
+    const middleMiddle = gamesquares[4].classList[1];
+    const middleRight = gamesquares[5].classList[1];
+    const bottomLeft = gamesquares[6].classList[1];
+    const bottomMiddle = gamesquares[7].classList[1];
+    const bottomRight = gamesquares[8].classList[1];
+
+    Then checked for the whether x or o is present in that location
+   
+    //horizontal wins
+    if (topLeft && topLeft === topMiddle && topLeft === topRight) {
+
+        winnerStatus(topLeft);
+    }
+
+
+    const winnerStatus = (letter) => {
+    winner = letter;
+    ----
+    ---
+    }
+    
+
+   
 
 # TO DO
 
 1. Compbine ai and player approch logic in one method
 2. Testing in different browsers
+3. Media query testing
 
 
 
