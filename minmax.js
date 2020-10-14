@@ -36,10 +36,18 @@ const canvas = document.querySelector(".game-area");
 
 // X & Y position of mouse click relative to the canvas
 
+
 let cnum = localStorage.getItem("cw");
 let hnum = localStorage.getItem("hw");
 let playerx = localStorage.getItem("px");
 let playero = localStorage.getItem("po");
+if (cnum || hnum || playerx || playero){
+    cnum=0;
+    hnum=0;
+    playerx=0;
+    playero=0;
+}
+
 console.log("playerx", playerx);
 console.log("playero", playero);
 console.log(cnum);
