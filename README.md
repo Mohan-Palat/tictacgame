@@ -56,6 +56,8 @@ CSS Flex and CSS grid is used
    * Modal Dialog
 
 # how winner is selected
+   1. Human vs Human
+
    The main div has 9 div placed using css grid. Using the querySelectorAll , selected the nine grids in an array. 
    Declared each position in the array
     const topLeft = gamesquares[0].classList[1];
@@ -82,6 +84,14 @@ CSS Flex and CSS grid is used
     ----
     ---
     }
+    2. AI vs Human
+
+     A. MINMAX Alogithm
+     B. WINNING STATES - TWO DIMENSIONAL ARRAY
+     C. KEEP TRACK OF STATES
+     D. CHECK EMPTY POSITIONS AND WINNING CONDITIONS
+
+
     
 
    
