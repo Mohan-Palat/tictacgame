@@ -54,7 +54,7 @@ let xIsNext = true; //if this is true x turn otherwise o S turn
 
 const xSymbol = 'x';
 const oSymbol = 'o';
-var audio = new Audio('Winner.mp3');
+let audio = new Audio('Winner.mp3');
 
 
 /****End of Global variables for Game */
@@ -68,7 +68,7 @@ var audio = new Audio('Winner.mp3');
 
 function startGame() {
 
-    var mode = getStoredValue(cw);
+    let mode = getStoredValue(cw);
     console.log('hhhhh==', mode);
     console.log(humwinner);
     resetGame = true;
