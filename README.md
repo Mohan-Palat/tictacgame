@@ -1,6 +1,8 @@
 # tictacgame
 # Description:
-    A tic tac toe game with two options. You can play against a player or computer.
+    A tic tac toe game with two options. You can play against a player or computer. The player who succeeds in placing three of their symbols in a horizontal, vertical, or diagonal row is the winner.
+
+
 # Technology:
 
 HTML, CSS, Javascript
@@ -14,7 +16,7 @@ HTML, CSS, Javascript
 6. As a user, I should not be able to continue playing once I win, lose, or tie
 7. As a user, I should be able to play the game again without refreshing the page
 
-# Design Methodolgy
+#  Methodolgy
 1. Divide and Conquer Approach
 2. Created wire frame 
    UI will be like tic tac toe played in elementry school days
@@ -22,7 +24,43 @@ HTML, CSS, Javascript
    Catchy color needed 
 4. Developed MVP
 5. Implemented AI concept
-5. MinMax algorith and alpha beta pruning alogorithm
+5. MinMax algorithm and alpha beta pruning alogorithm
 6. Model Dialog
 7. Player score card.
-8. Incopoarted audio
+8. Winner will be notified using an audio file
+
+# WireFrame
+https://docs.google.com/drawings/d/1Oyx7ZyWaybIIRFGaPvbX8s1hT3ObB8x_gMKuRhCizfk/edit?usp=sharing
+
+
+# How to run the project
+ 1. You can play the game using the
+
+ https://sunitha1022.github.io/tictacgame/
+
+ 2. Clone the repo and run index.html
+
+# Code 
+
+1. CSS
+
+CSS Flex and CSS grid is used
+
+2. HTML 5
+
+3. Javascript
+
+   * Loops and Array
+   * Local Storage
+   * Event Listeners
+   * Modal Dialog
+
+
+# TO DO
+
+1. Compbine ai and player approch logic in one method
+2. Testing in different browsers
+
+
+
+

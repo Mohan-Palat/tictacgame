@@ -112,15 +112,29 @@ body{
     color: #A9CBD9;
 
 }
-@media only screen and (max-wdith: 1024px){
+@media only screen and (max-wdith: 1200px){
 
     .game-area{
-       margin-top: top 25px;
-       grid-gap:10px;
+       margin-top: top 5px;
+       grid-gap:1px;
     }
     .game-area-cube{
         height:150px;
         width:250px;
+
+    }
+
+}
+
+@media only screen and (max-wdith: 500px){
+
+    .game-area{
+       margin-top: top 5px;
+       grid-gap:1px;
+    }
+    .game-area-cube{
+        height:100px;
+        width:1000px;
 
     }
 
